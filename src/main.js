@@ -1,6 +1,6 @@
-import { useHomePageData } from "./useHomePageData.js";
-import { renderRepos, renderUser } from "./render.js";
-import { useDarkMode } from "./useDarkMode.js";
+import { useHomePageData } from "./hooks/useHomePageData";
+import { renderRepos, renderUser } from "./utils/render.js";
+import { useDarkMode } from "./hooks/useDarkMode.js";
 import "./styles/preload.scss";
 
 const { useFetchRepolist, useFetchUserInfo } = useHomePageData();
