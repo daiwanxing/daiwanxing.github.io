@@ -2,6 +2,8 @@ const languageThemeColor = {
   vue: "#44bd87",
   javascript: "#f0db4f",
   react: "#087ea4",
+  html: "rgb(255,87,34)",
+  css: "rgb(0,106,177)"
 };
 
 export const renderRepos = function (repos) {
