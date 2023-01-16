@@ -18,7 +18,7 @@ jobs:
       - name: start deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with: 
-            BASE_BRANCH: "main"
+            BASE_BRANCH: main
             branch: deploy
             folder: dist
             
