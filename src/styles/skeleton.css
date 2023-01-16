@@ -1,0 +1,30 @@
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.skeleton-container {
+  display: grid;
+  gap: 20px;
+}
+
+.skeleton-container .skeleton-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--skeleton-line-color);
+  animation: breathe 1.5s ease-in-out infinite;
+}
+
+.skeleton-container .skeleton-line {
+  height: 20px;
+  border-radius: 8px;
+  background: var(--skeleton-line-color);
+  animation: breathe 1.5s ease-in-out infinite;
+}

@@ -1,0 +1,23 @@
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --aside-bg-color: #1a1a1a;
+    --article-bg-color: #242424;
+    --border-color: rgba(84, 84, 84, 0.48);
+    --text-color: rgba(255, 255, 255, .87);
+    --link-color: #3694f5;
+    --text-light-color: #d6d3d1;
+    --skeleton-line-color: rgb(45,55,69);
+  }
+}
+
+@media screen and (prefers-color-scheme: light) {
+  :root {
+    --aside-bg-color: #fff;
+    --article-bg-color: #fafbfc;
+    --border-color: rgba(60, 60, 60, 0.12);
+    --text-color: #213457;
+    --link-color: #0072f5;
+    --text-light-color: #586069;
+    --skeleton-line-color: linear-gradient(to right, rgb(236, 236, 236), rgb(239,239,239), rgb(240,240,240))
+  }
+}

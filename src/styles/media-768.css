@@ -1,0 +1,22 @@
+/* 当视口尺寸大于768px */
+
+html, body {
+    height: 100%;
+}
+
+main {
+    display: flex;
+}
+
+main aside {
+    max-width: 250px;
+}
+
+main article {
+    flex: 1;
+    scroll-behavior: smooth;
+}
+
+main article .article-wrapper .content-wrapper {
+    margin-left: 40px;
+}
