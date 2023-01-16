@@ -8,7 +8,27 @@
     --scrollbar-track-bg-color: linear-gradient(90deg,#434343,#434343 1px,#111 0,#111);
 }
 
+*::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    background: var(--scrollbar-thumb-bg-color);
+    box-shadow: inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-bg-color);
+
+}
+
 dd {
+    margin: 0;
+}
+
+ul {
     margin: 0;
 }
 
@@ -32,6 +52,10 @@ figure img {
     border-radius: 50%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
     position: relative;
@@ -40,28 +64,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    color-scheme: light dark;
 }
 
-
-article::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-}
-
-article::-webkit-scrollbar-thumb {
-    border-radius: 16px;
-    background: var(--scrollbar-thumb-bg-color);
-    box-shadow: inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
-}
-
-article::-webkit-scrollbar-track {
-    background: var(--scrollbar-track-bg-color);
-
+h1 {
+    color: var(--text-title-color);
 }
 
 main {
-    height: 100%;
+    min-height: 100%;
     color: var(--text-color);
 }
 
@@ -72,6 +82,11 @@ main aside {
     background-color: var(--aside-bg-color);
 }
 
+main aside .left-panel {
+    position: sticky;
+    top: 40px;
+}
+
 main aside dl {
     display: flex;
     align-items: center;
@@ -79,9 +94,7 @@ main aside dl {
 }
 
 main article {
-    overflow: hidden;
-    overflow-y: auto;
-    padding: 40px 24px;
+    padding: 50px 24px;
     background-color: var(--article-bg-color);
 }
 
@@ -116,11 +129,6 @@ a:visited {
 
 main article {
     color: var(--text-light-color);
-}
-
-h1 {
-    color-scheme: light dark;
-    color: initial;
 }
 
 
@@ -176,4 +184,52 @@ article .topic-wrapper li {
     text-align: center;
     border-radius: 6px;
     border: 1px solid var(--border-color);
+}
+
+
+menu {
+    position: fixed;
+    right: 20px;
+    top: 0;
+}
+
+.dark-light-btn {
+    position: relative;
+    width: 44px;
+    height: 22px;
+    outline: none;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--buton-text-color);
+    transition: .2s ease-out all;
+    background-color: var(--button-bg-color);
+}
+
+.dark-light-btn:hover {
+    border-color: #8e8e8e;
+}
+
+
+.dark-light-btn span {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    left: 1px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    line-height: 17px;
+    background-color: var(--button-bg-color2);
+    transition: .2s ease-out left;
+}
+
+.dark-light-btn span.l {
+    left: 1px;
+}
+
+.dark-light-btn span.r {
+    left: calc(100% - 20px);
 }
