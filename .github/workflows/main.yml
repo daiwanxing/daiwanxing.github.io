@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v3.3.0
         with:
           persist-credentials: false
       - name: install and build
@@ -16,7 +16,7 @@ jobs:
           npm install
           npm run build
       - name: start deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with: 
             branch: deploy
             folder: dist
