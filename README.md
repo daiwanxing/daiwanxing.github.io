@@ -10,4 +10,4 @@ this repo have some unfinished features, so i create a roadmap let me track it.
 - [x] support user switch dark/light mode instead let system decide use what mode.
 - [x] use webpack pack it.
 - [ ] add friendly animations
-- [ ] use CI auto deploy
+- [x] support auto deploy on each push
