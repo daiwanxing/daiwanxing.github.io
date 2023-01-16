@@ -1,6 +1,3 @@
-import { ACCESS_TOKEN } from "./consts.js";
-import { Octokit } from "https://cdn.skypack.dev/octokit";
-
 export function useHomePageData() {
   function useFetchRepolist() {
     const repolist = [];
@@ -33,15 +30,9 @@ export function useHomePageData() {
     const userData = {};
 
     const fetchUser = async () => {
-      const octokit = new Octokit({
-        auth: ACCESS_TOKEN,
-      });
-
-      const { data } = await octokit.request("GET /users/daiwanxing", {
-        username: "daiwanxing",
-      });
-
-      Object.assign(userData, data);
+      const result = await fetch("https://api.github.com/users/daiwanxing")
+      const parsedJson = await result.json();
+      Object.assign(userData, parsedJson);
     };
 
     return {
