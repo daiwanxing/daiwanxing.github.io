@@ -1,0 +1,24 @@
+name: deploy-workflow
+
+on:
+  push:
+    branches:
+     - main
+jobs:
+  deploy-homepage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@latest
+        with:
+          persist-credentials: false
+      - name: install and build
+        run:
+          npm install
+          npm run build
+      - name: start deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with: 
+            branch: deploy
+            folder: dist
+            
