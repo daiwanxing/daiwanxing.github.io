@@ -21,6 +21,23 @@ export function useDarkMode () {
         });
     }
 
+    const mqlDark = window.matchMedia(`(prefers-color-scheme: dark)`);
+    const mqlLight = window.matchMedia(`(prefers-color-scheme: light)`);
+
+    mqlDark.onchange = (e) => {
+        if (e.matches) {
+            dark.value = true;
+            setStyle();
+        }
+    }
+
+    mqlLight.onchange = (e) => {
+        if (e.matches) {
+            dark.value = false;
+            setStyle();
+        }
+    }
+
     setStyle();
 
     return {

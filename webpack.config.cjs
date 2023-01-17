@@ -1,10 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (arg, { mode }) => {
   return {
+    target: ["es2020", "web"],
     mode: mode || "development",
-    entry: "./src/main.js",
+    entry: {
+      main: ["./src/main.js"],
+    },
     devtool: mode === "production" ? false : "cheap-module-source-map",
     output: {
       filename: "js/[name].[fullhash].js",
@@ -16,16 +20,15 @@ module.exports = (arg, { mode }) => {
       new HtmlWebpackPlugin({
         template: "./index.html",
       }),
+      new MiniCssExtractPlugin({
+        filename: "[name].[fullhash].css"
+      }),
     ],
     module: {
       rules: [
         {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"],
-        },
-        {
-          test: /\.sc|ass$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          test: /\.scss$/,
+          use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         },
         {
           test: /.*(\.jpe?g|png|svg)$/,
@@ -33,7 +36,7 @@ module.exports = (arg, { mode }) => {
         },
         {
           test: /\.html$/,
-          loader: "html-loader"
+          loader: "html-loader",
         }
       ],
     },
@@ -49,5 +52,10 @@ module.exports = (arg, { mode }) => {
         progress: true,
       },
     },
+    resolve: {
+      alias: {
+        "@": path.join(__dirname, "src")
+      }
+    }
   };
 };
