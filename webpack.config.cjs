@@ -1,18 +1,18 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (arg, { mode }) => {
   return {
     mode: mode || "development",
     entry: "./src/main.js",
+    devtool: mode === "production" ? false : "cheap-module-source-map",
     output: {
-      filename: "[name].[fullhash].js",
+      filename: "js/[name].[fullhash].js",
       path: path.resolve(__dirname, "dist"),
       clean: true,
+      assetModuleFilename: 'assets/[hash][ext][query]'
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: "./index.html",
       }),
@@ -31,6 +31,10 @@ module.exports = (arg, { mode }) => {
           test: /.*(\.jpe?g|png|svg)$/,
           type: "asset/resource",
         },
+        {
+          test: /\.html$/,
+          loader: "html-loader"
+        }
       ],
     },
     devServer: {
