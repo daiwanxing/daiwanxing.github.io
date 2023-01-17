@@ -28,7 +28,7 @@ module.exports = (arg, { mode }) => {
       rules: [
         {
           test: /\.scss$/,
-          use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+          use: [ mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         },
         {
           test: /.*(\.jpe?g|png|svg)$/,

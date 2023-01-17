@@ -1,9 +1,12 @@
+import enLang from "../lang/en";
+import zhCNLang from "../lang/zh-cn";
+
 const languageThemeColor = {
   vue: "#44bd87",
   javascript: "#f0db4f",
   react: "#087ea4",
   html: "rgb(255,87,34)",
-  css: "rgb(0,106,177)"
+  css: "rgb(0,106,177)",
 };
 
 export const renderRepos = function (repos) {
@@ -45,18 +48,18 @@ export const renderRepos = function (repos) {
   });
 
   const childrens = repoContainer.children;
-  [...childrens].forEach(d => d.remove());
+  [...childrens].forEach((d) => d.remove());
 
   miniDoc.append(...repoItems);
   repoContainer.append(miniDoc);
 };
 
-
-export function renderUser (userData) {
+export function renderUser(userData) {
   const asideNode = document.querySelector("aside .user-detail");
   const miniDoc = document.createDocumentFragment();
 
-  miniDoc.appendChild(document.createRange().createContextualFragment(`
+  miniDoc.appendChild(
+    document.createRange().createContextualFragment(`
     <figure>
       <img src="${userData.avatar_url}" />
       <figcaption>
@@ -64,9 +67,42 @@ export function renderUser (userData) {
       </figcaption>
       <p>${userData.bio}</p>
     </figure>
-  `));
+  `)
+  );
 
   const child = asideNode.firstElementChild;
   asideNode.removeChild(child);
   asideNode.appendChild(miniDoc);
+}
+
+/**
+ * 
+ * @param {"zh-cn" | "en"} lang 
+ */
+export function renderLang(lang) {
+  const sections = document.querySelectorAll("section");
+  const language = lang === "zh-cn" ? zhCNLang : enLang;
+
+  sections.forEach((d, index) => {
+    const langContent =
+      index === 0
+        ? language["partOne"]
+        : index === 1
+        ? language["partTwo"]
+        : language["partThree"];
+
+    d.querySelector("h1").innerText = langContent["title"];
+    d.querySelector(".sub-title").innerText = langContent["subTitle"];
+
+    if (index === 0) {
+      d.querySelectorAll("p:not(p.sub-title)").forEach(node => node.remove());
+      const miniDoc = document.createDocumentFragment();
+      language["partOne"].content.forEach(text => {
+        const p = document.createElement("p");
+        p.innerText = text;
+        miniDoc.appendChild(p);
+      });
+      d.querySelector(".content-wrapper").appendChild(miniDoc);
+    }
+  });
 }
