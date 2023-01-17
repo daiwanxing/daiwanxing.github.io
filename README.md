@@ -2,7 +2,7 @@
 
 This is my homepage repo, welcome click [homepage](https://daiwanxing.github.io) link visit.
 
-this repo have some unfinished features, so i create a roadmap let me track it.
+this repo have some unfinished features, so i create a roadmap to finish that.
 
 # RoadMap
 
