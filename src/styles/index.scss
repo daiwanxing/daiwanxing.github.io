@@ -30,6 +30,7 @@ dd {
 
 ul {
     margin: 0;
+    padding: 0;
 }
 
 li {
@@ -80,11 +81,6 @@ main aside {
     min-width: 250px;
     border-right: 1px solid var(--border-color);
     background-color: var(--aside-bg-color);
-}
-
-main aside .left-panel {
-    position: sticky;
-    top: 40px;
 }
 
 main aside dl {
@@ -193,7 +189,37 @@ menu {
     top: 0;
 }
 
+menu ul {
+    display: flex;
+    align-items: center;
+}
+
+menu ul li {
+    position: relative;
+    min-width: 42px;
+    padding: 0 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+menu ul li:first-child i {
+    font-size: 18px;
+    color: var(--text-title-color);
+}
+
+menu ul li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    right: 0;
+    margin: auto 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
 .dark-light-btn {
+    display: inherit;
     position: relative;
     width: 44px;
     height: 22px;
