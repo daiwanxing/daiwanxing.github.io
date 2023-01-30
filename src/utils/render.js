@@ -7,6 +7,7 @@ const languageThemeColor = {
   react: "#087ea4",
   html: "rgb(255,87,34)",
   css: "rgb(0,106,177)",
+  typescript: "rgb(49, 120, 198)",
 };
 
 export const renderRepos = function (repos) {
